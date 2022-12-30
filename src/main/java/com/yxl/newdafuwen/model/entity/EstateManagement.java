@@ -1,10 +1,15 @@
 package com.yxl.newdafuwen.model.entity;
 
+import com.yxl.newdafuwen.constant.EstateManagementStatusEnum;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.Instant;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "estate_management")
 public class EstateManagement {
     @Id
@@ -23,57 +28,9 @@ public class EstateManagement {
     private Integer buildingNumber;
 
     @Column(name = "sts_cd", length = 32)
-    private String stsCd;
+    private EstateManagementStatusEnum stsCd;
 
     @Column(name = "create_date")
     private Instant createDate;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    public Estate getEstate() {
-        return estate;
-    }
-
-    public void setEstate(Estate estate) {
-        this.estate = estate;
-    }
-
-    public Integer getBuildingNumber() {
-        return buildingNumber;
-    }
-
-    public void setBuildingNumber(Integer buildingNumber) {
-        this.buildingNumber = buildingNumber;
-    }
-
-    public String getStsCd() {
-        return stsCd;
-    }
-
-    public void setStsCd(String stsCd) {
-        this.stsCd = stsCd;
-    }
-
-    public Instant getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Instant createDate) {
-        this.createDate = createDate;
-    }
 
 }

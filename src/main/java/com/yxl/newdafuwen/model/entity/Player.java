@@ -1,10 +1,15 @@
 package com.yxl.newdafuwen.model.entity;
 
+import com.yxl.newdafuwen.constant.PlayerTypeEnum;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.Instant;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "player")
 public class Player {
     @Id
@@ -30,60 +35,17 @@ public class Player {
     @Column(name = "create_date")
     private Instant createDate;
 
-    public String getId() {
-        return id;
+    @Column(name = "type", length = 32)
+    private PlayerTypeEnum type;
+
+    @Column(name = "player_password", length = 32)
+    private String playerPassword;
+
+    public String getPlayerPassword() {
+        return playerPassword;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setPlayerPassword(String playerPassword) {
+        this.playerPassword = playerPassword;
     }
-
-    public Game getGame() {
-        return game;
-    }
-
-    public void setGame(Game game) {
-        this.game = game;
-    }
-
-    public Integer getSeqNumber() {
-        return seqNumber;
-    }
-
-    public void setSeqNumber(Integer seqNumber) {
-        this.seqNumber = seqNumber;
-    }
-
-    public Integer getCash() {
-        return cash;
-    }
-
-    public void setCash(Integer cash) {
-        this.cash = cash;
-    }
-
-    public Integer getGameOrder() {
-        return gameOrder;
-    }
-
-    public void setGameOrder(Integer gameOrder) {
-        this.gameOrder = gameOrder;
-    }
-
-    public Integer getLocation() {
-        return location;
-    }
-
-    public void setLocation(Integer location) {
-        this.location = location;
-    }
-
-    public Instant getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Instant createDate) {
-        this.createDate = createDate;
-    }
-
 }

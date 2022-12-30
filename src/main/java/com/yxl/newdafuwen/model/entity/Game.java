@@ -1,10 +1,15 @@
 package com.yxl.newdafuwen.model.entity;
 
+import com.yxl.newdafuwen.constant.GameStatusEnum;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.Instant;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "game")
 public class Game {
     @Id
@@ -25,7 +30,7 @@ public class Game {
     private Integer initCash;
 
     @Column(name = "sts_cd")
-    private Integer stsCd;
+    private GameStatusEnum stsCd;
 
     @Column(name = "create_time")
     private Instant createTime;
@@ -33,68 +38,18 @@ public class Game {
     @Column(name = "end_time")
     private Instant endTime;
 
-    public String getId() {
-        return id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "winner")
+    private Player winner;
+
+    @Column(name = "game_password", length = 32)
+    private String gamePassword;
+
+    public String getGamePassword() {
+        return gamePassword;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setGamePassword(String gamePassword) {
+        this.gamePassword = gamePassword;
     }
-
-    public GameMap getGameMap() {
-        return gameMap;
-    }
-
-    public void setGameMap(GameMap gameMap) {
-        this.gameMap = gameMap;
-    }
-
-    public String getGameName() {
-        return gameName;
-    }
-
-    public void setGameName(String gameName) {
-        this.gameName = gameName;
-    }
-
-    public Integer getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Integer player) {
-        this.player = player;
-    }
-
-    public Integer getInitCash() {
-        return initCash;
-    }
-
-    public void setInitCash(Integer initCash) {
-        this.initCash = initCash;
-    }
-
-    public Integer getStsCd() {
-        return stsCd;
-    }
-
-    public void setStsCd(Integer stsCd) {
-        this.stsCd = stsCd;
-    }
-
-    public Instant getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Instant createTime) {
-        this.createTime = createTime;
-    }
-
-    public Instant getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Instant endTime) {
-        this.endTime = endTime;
-    }
-
 }
