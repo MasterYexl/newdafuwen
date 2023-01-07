@@ -45,6 +45,28 @@ public class Game {
     @Column(name = "game_password", length = 32)
     private String gamePassword;
 
+    @Column(name = "max_dice_number", nullable = false)
+    private Integer maxDiceNumber;
+
+    @Column(name = "current_order", nullable = false)
+    private Integer currentOrder;
+
+    public Integer getCurrentOrder() {
+        return currentOrder;
+    }
+
+    public void setCurrentOrder(Integer currentOrder) {
+        this.currentOrder = currentOrder;
+    }
+
+    public Integer getMaxDiceNumber() {
+        return maxDiceNumber;
+    }
+
+    public void setMaxDiceNumber(Integer maxDiceNumber) {
+        this.maxDiceNumber = maxDiceNumber;
+    }
+
     public String getGamePassword() {
         return gamePassword;
     }
